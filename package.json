@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AgustinSalazar2/Precio-Smart-PI/issues"
   },
-  "homepage": "https://github.com/AgustinSalazar2/Precio-Smart-PI#readme"
+  "homepage": "https://github.com/AgustinSalazar2/Precio-Smart-PI#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
