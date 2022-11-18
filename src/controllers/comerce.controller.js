@@ -28,11 +28,11 @@ ctrlComerce.getComercio = async (req, res) => {
 };
 
 ctrlComerce.postComercio = async (req, res) => {    
-    const { comerceName, direccion, phone } = req.body;
+    const { commerceName, direccion, phone } = req.body;
     
     try {
         const newComercio = new Comercio({   //Se instancia un nuevo documento de mongodb
-            comerceName,
+            commerceName,
             direccion,
             phone
         });

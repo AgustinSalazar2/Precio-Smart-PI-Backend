@@ -33,6 +33,7 @@ app.use(morgan('dev'));
 //*Importación de endpoints
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/user.routes'));
+app.use(require('./routes/comerce.routes'));
 
 //*#############################- DIRECTORIO DE ARCHIVOS ESTÁTICOS -#########################################
 // expressApp.use(express.static(path.join(__dirname, 'src/public')));
