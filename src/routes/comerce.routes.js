@@ -16,12 +16,12 @@ const {
 //---------------------------------------------------------------------------------------------------------
 //*DEFINO RUTAS:
 
-// Ruta para obtener todos los usuarios ACTIVOS (no borrados). Sólo puede ser usado por usuarios con permisos de administrador
+
 router.route('/comercios')
     .get( getComercios )
     
 
-    // Ruta para ACTUALIZAR el usuario con id específico
+
 router.route('/comercios/:id_comerce')
     .put( putComercios )
     .delete( deleteComercio )
@@ -29,7 +29,7 @@ router.route('/comercios/:id_comerce')
     
 
 
-// Ruta para AÑADIR NUEVO usuario. No ser requiere TOKEN ni permisos de administrador
+
 router.route('/comercio')
     .post( postComercio );
 
