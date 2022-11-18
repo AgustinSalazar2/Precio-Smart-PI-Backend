@@ -35,4 +35,4 @@ const productSchema = new Schema({
     timestamps: true
 })
 
-module.exports = model(Productos, productSchema);
+module.exports = model('Productos', productSchema);

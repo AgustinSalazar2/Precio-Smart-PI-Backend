@@ -13,6 +13,10 @@ const commerceSchema = new Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: Number,
+        required:true
+    },
     idUsuario : {
         type: Schema.Types.ObjectId,
         ref: 'Usuarios'
@@ -26,4 +30,4 @@ const commerceSchema = new Schema({
     timestamps: true
 })
 
-module.exports = model(Comercios, commerceSchema);
+module.exports = model('Comercios', commerceSchema);
