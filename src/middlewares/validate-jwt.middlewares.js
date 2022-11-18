@@ -33,7 +33,7 @@ const validateJWT = async (req, res, next) => {
         };
 
         //*Verifico que el usuario esté activo!
-        if(!theUser.is_active){
+        if(!theUser.isActive){
             return res.status(400).json({
                 ok: false,
                 message: "Error trying to authenticate. The user is NO LONGER ACTIVE 🕸🕷🕸."

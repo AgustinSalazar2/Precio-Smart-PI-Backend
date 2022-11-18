@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 
 
-const generateJWT = uid => {
+const generateJWT = (uid) => {
     return new Promise ( (resolve, reject) => {
         //*Generación del token con el id del usuario y una palabra secreta
         jwt.sign( uid , process.env.JWT_SECRET, 

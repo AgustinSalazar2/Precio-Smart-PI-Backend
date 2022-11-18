@@ -6,16 +6,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 
+//Ejecuto la librería de express
+const app = express();
+
 //*##############################- IMPORTING CONNECTION TO DATABASE -#################################
 
 const connectDB = require('./database/connection.database');
-
-//Ejecuto la librería de express
-const expressApp = express();
-
-//*#############################- ROUTES -##########################################################
-//*Importación de endpoints
-
 
 
 //*#############################- CONFIGURATIONS -##################################################
@@ -28,18 +24,21 @@ connectDB();//Ejecuto la función connectDB para HACER LA CONEXIÓN A LA BASE DE
 
 //*#############################- MIDDLEWARES -##################################################
 
-expressApp.use(express.json());
-
-expressApp.use(cors());
-expressApp.use(morgan('dev'));
+app.use(express.json());
+app.use(cors());
+app.use(morgan('dev'));
 // expressApp.use(user);
 
+//*#############################- ROUTES -##########################################################
+//*Importación de endpoints
+app.use(require('./routes/auth.routes'));
+app.use(require('./routes/user.routes'));
 
 //*#############################- DIRECTORIO DE ARCHIVOS ESTÁTICOS -#########################################
 // expressApp.use(express.static(path.join(__dirname, 'src/public')));
 
 
 //*#############################- STARTING SERVER -#################################################
-expressApp.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server running and listening on port: ${port}`);
 });
