@@ -27,22 +27,26 @@ ctrlProduct.getProduct = async (req, res) => {
         })
     }
 };
-/* 
-ctrlProduct.postProducto = async (req, res) => {    
-    const { commerceName, direccion, phone } = req.body;
+
+
+ctrlProduct.postProduct = async (req, res) => {    
+    const { productName, marca, presentacion, precio, idComercio, isActive } = req.body;
     
     try {
-        const newComercio = new Comercio({   //Se instancia un nuevo documento de mongodb
-            commerceName,
-            direccion,
-            phone
+        const newProduct = new Producto({   //Se instancia un nuevo documento de mongodb
+            productName,
+            marca,
+            presentacion,
+            precio,
+            idComercio,
+            isActive
         });
     
-        const comerce = await newComercio.save(); //Se almacena en la base de datos con el metodo save()
+        const product = await newProduct.save(); //Se almacena en la base de datos con el metodo save()
     
         return res.json({
-            msg: 'Comercio creado correctamente',
-            comerce
+            msg: 'Producto cargado correctamente',
+            product
         });
     } catch (error) {
         return res.json({
@@ -52,40 +56,42 @@ ctrlProduct.postProducto = async (req, res) => {
     }
 };
 
-ctrlProduct.putComercios = async (req, res) => {
-    const comerceId = req.params.id_comerce;
-    const { comerceName, direccion, phone, ...otros } = req.body;
+ctrlProduct.putProduct = async (req, res) => {
+    const productId = req.params.id_product;
+    const { productName, marca, presentacion, precio, idComercio, isActive, ...otros } = req.body;
 
     try {
-        const comerceUpdate = await Comercio.findByIdAndUpdate(comerceId, { comerceName, direccion, phone, ...otros });
-        return res.json({
-            msg: 'Comercio actualizado correctamente',
-            comerceUpdate
-        })
+        const productUpdate = await Producto.findByIdAndUpdate(productId, { productName, marca, presentacion, precio, idComercio, isActive, ...otros });
+        return res.json(
+            {
+            msg: 'Producto actualizado correctamente',
+            productUpdate
+            }
+        )
 
     } catch (error) {
         console.log(error);
         return res.json({
-            msg: 'Error al actualizar el comercio'
+            msg: 'Error al actualizar el producto'
         });
     }
 };
 
-ctrlProduct.deleteComercio = async (req, res)=>{ 
-    const comerceId = req.params.id_comerce;
+ctrlProduct.deleteProduct = async (req, res)=>{ 
+    const productId = req.params.id_product;
 
     try {
-        await Comercio.findByIdAndUpdate(comerceId, {isActive: false})
+        await Producto.findByIdAndUpdate(productId, {isActive: false})
         return res.json({
-            msg: 'Comercio eliminado correctamente'
+            msg: 'Producto eliminado correctamente'
         })
 
     } catch (error) {
         console.log(error)
         return res.json({
-            msg: 'Error al eliminar el comercio'
+            msg: 'Error al eliminar el producto'
         });
     }
-}; */
+};
 
 module.exports = ctrlProduct
