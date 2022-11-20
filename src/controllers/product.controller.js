@@ -30,16 +30,15 @@ ctrlProduct.getProduct = async (req, res) => {
 
 
 ctrlProduct.postProduct = async (req, res) => {    
-    const { productName, marca, presentacion, precio, idComercio, isActive } = req.body;
+    const { productName, marca, presentacion, precio } = req.body;
     
     try {
         const newProduct = new Producto({   //Se instancia un nuevo documento de mongodb
             productName,
             marca,
             presentacion,
-            precio,
-            idComercio,
-            isActive
+            precio
+            
         });
     
         const product = await newProduct.save(); //Se almacena en la base de datos con el metodo save()
