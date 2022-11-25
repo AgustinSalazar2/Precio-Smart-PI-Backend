@@ -17,10 +17,12 @@ const commerceSchema = new Schema({
         type: Number,
         required:true
     },
+    
     idUsuario : {
         type: Schema.Types.ObjectId,
         ref: 'Usuarios' //!El ref indica la colección a la que tengo que ir a buscar el id!
     },
+
     isActive : {
         type: Boolean,
         default: true

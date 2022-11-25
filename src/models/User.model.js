@@ -26,12 +26,7 @@ const userSchema = new Schema({
     isActive : {
         type: Boolean,
         default: true
-    },
-
-    comerce_id : {
-        type : Schema.Types.ObjectId,
-        ref : 'Comercios' //!El ref indica la colección a la que tengo que ir a buscar el id!
-    },
+    }
 
 }, {
     versionKey: false,
