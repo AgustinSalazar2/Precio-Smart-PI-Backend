@@ -33,8 +33,6 @@ const userSchema = new Schema({
         ref : 'Comercios' //!El ref indica la colección a la que tengo que ir a buscar el id!
     },
 
-
-
 }, {
     versionKey: false,
     timestamps: true

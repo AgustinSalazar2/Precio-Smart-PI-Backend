@@ -58,8 +58,7 @@ ctrlAuth.startSession = async (req, res) => {
         const token = await generateJWT({ uid: user._id });
 
         return res.status(200).json({ 
-            message: "Correct password! ✔",
-            message2: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
+            message: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
             user,
             token });
 
