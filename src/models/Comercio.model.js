@@ -24,7 +24,11 @@ const commerceSchema = new Schema({
     isActive : {
         type: Boolean,
         default: true
-    }
+    },
+    user_id : {
+        type : Schema.Types.ObjectId,
+        ref : 'Users' //!El ref indica la colección a la que tengo que ir a buscar el id!
+    },
 }, {
     versionKey: false,
     timestamps: true
