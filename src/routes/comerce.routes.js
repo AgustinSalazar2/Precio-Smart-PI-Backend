@@ -12,6 +12,7 @@ const {
     deleteComercio,
     getComercios
 } = require('../controllers/comerce.controller');
+const validateJWT = require('../middlewares/validate-jwt.middlewares');
 
 //---------------------------------------------------------------------------------------------------------
 //*DEFINO RUTAS:
@@ -31,7 +32,7 @@ router.route('/comercios/:id_comerce')
 
 
 router.route('/comercio')
-    .post( postComercio );
+    .post([validateJWT], postComercio );
 
 
 module.exports = router;

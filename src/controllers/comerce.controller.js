@@ -34,7 +34,8 @@ ctrlComerce.postComercio = async (req, res) => {
         const newComercio = new Comercio({   //Se instancia un nuevo documento de mongodb
             commerceName,
             direccion,
-            phone
+            phone,
+            idUsuario: req.user._id
         });
     
         const comerce = await newComercio.save(); //Se almacena en la base de datos con el metodo save()

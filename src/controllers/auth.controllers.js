@@ -3,6 +3,7 @@ const User = require('../models/User.model');
 const generateJWT = require('../helpers/generateJWT');
 
 const bcrypt = require('bcrypt');
+const ComercioModel = require('../models/Comercio.model');
 
 
 ctrlAuth = {};
@@ -53,14 +54,28 @@ ctrlAuth.startSession = async (req, res) => {
 
         //----------------- FIN VALIDACIONES -------------------------------------------------------
 
+        const comerce = await ComercioModel.findOne({idUsuario: user._id})
+        
+        //----------------------------------------------------------------------------------------
         //*GENERACIÓN DE TOKEN:
         //!La lógica de generación de tokens está en la carpeta helpers
         const token = await generateJWT({ uid: user._id });
 
-        return res.status(200).json({ 
-            message: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
-            user,
-            token });
+        if (comerce) {
+            return res.status(200).json({ 
+                message: "Correct password! ✔",
+                message2: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
+                user,
+                token,
+                comerce
+            });
+        } else {
+            return res.status(200).json({ 
+                message: "Correct password! ✔",
+                message2: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
+                user,
+                token });
+        }
 
     } catch (error) {
 
