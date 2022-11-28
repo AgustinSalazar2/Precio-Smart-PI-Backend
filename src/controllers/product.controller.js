@@ -5,7 +5,9 @@ const ctrlProduct = {};
 
 ctrlProduct.getProducts = async (req, res) => {
     try {
-        const products = await Producto.find();
+        const products = await Producto.find()
+        .populate('idComercio')
+        .sort({precio: 1})
         return res.json(products);
     
     } catch (error) {
@@ -30,7 +32,7 @@ ctrlProduct.getProduct = async (req, res) => {
 
 
 ctrlProduct.postProduct = async (req, res) => {    
-    const { productName, marca, presentacion, precio } = req.body;
+    const { productName, marca, presentacion, precio, idComercio } = req.body;
     
     try {
         const newProduct = new Producto({   //Se instancia un nuevo documento de mongodb
