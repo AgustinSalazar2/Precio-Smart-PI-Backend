@@ -29,8 +29,6 @@ router.route('/comercios/:id_comerce')
     .get( getComercio )
     
 
-
-
 router.route('/comercio')
     .post([validateJWT], postComercio );
 

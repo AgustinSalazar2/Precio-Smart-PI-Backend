@@ -70,14 +70,16 @@ ctrlProduct.getProduct = async (req, res) => {
 
 
 ctrlProduct.postProduct = async (req, res) => {    
-    const { productName, marca, presentacion, precio, idComercio } = req.body;
+    const { categoria, productName, marca, presentacion, precio, idComercio } = req.body;
     
     try {
         const newProduct = new Producto({   //Se instancia un nuevo documento de mongodb
+            categoria,
             productName,
             marca,
             presentacion,
-            precio
+            precio,
+            idComercio
             
         });
     

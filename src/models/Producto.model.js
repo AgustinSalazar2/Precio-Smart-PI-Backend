@@ -5,6 +5,10 @@ const {
 } = require('mongoose')
 
 const productSchema = new Schema({
+    categoria: {
+        type: String,
+        required: true
+    },
     productName: {
         type: String,
         required: true
@@ -22,6 +26,7 @@ const productSchema = new Schema({
         required: true
 
     },
+  
     idComercio : {
         type: Schema.Types.ObjectId,
         ref: 'Comercios'
