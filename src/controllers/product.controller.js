@@ -3,21 +3,35 @@ const Producto = require('../models/Producto.model');
 
 const ctrlProduct = {};
 
-ctrlProduct.getProducts = async (req, res) => {
-    const { limite =  } = req.params;
-    try {
-       if(limite) {
-        const products = await Producto.find()
-        .populate('idComercio')
-        .sort({precio: 1})
-        .limit(limite)
-       }else {
-        const products = await Producto.find()
-        .populate('idComercio')
-        .sort({precio: 1})
-       }
-        return res.json(products);
+// ctrlProduct.getProducts = async (req, res) => {
+//     const { limite =  10} = req.params;
+//     try {
+//        if(limite) {
+//         const products = await Producto.find()
+//         .populate('idComercio')
+//         .sort({precio: 1})
+//         .limit(limite)
+//        }else {
+//         const products = await Producto.find()
+//         .populate('idComercio')
+//         .sort({precio: 1})
+//        }
+//         return res.json(products);
     
+//     } catch (error) {
+//         return res.json({
+//             msg: 'Error al obtener productos'
+//         })
+//     }
+// };
+
+ctrlProduct.getProducts = async (req, res) => {
+    try {
+        const products = await Producto.find()
+        .populate('idComercio')
+        .sort({precio: 1})
+
+        return res.json(products);
     } catch (error) {
         return res.json({
             msg: 'Error al obtener productos'
