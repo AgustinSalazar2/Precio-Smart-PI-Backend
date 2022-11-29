@@ -40,16 +40,18 @@ ctrlProduct.getProducts = async (req, res) => {
 };
 
 ctrlProduct.getProductsByCategoria = async (req, res) => {
-    const categoria = req.params.categoria;
-
+    const categ = req.params.categoria;
+    console.log(categ);
     try {
-        const products = await Producto.find( {categoria: categoria} )
+        const products = await Producto.find( {categoria: categ } )
         .populate('idComercio')
-        .sort({precio: 1})
+        
+        
+        
 
         return res.json(products);
     } catch (error) {
-        return res.json({
+        return res.status(400).json({
             msg: 'Error al obtener productos'
         })
     }

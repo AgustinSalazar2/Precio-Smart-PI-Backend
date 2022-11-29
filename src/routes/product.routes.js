@@ -31,7 +31,7 @@ router.route('/productos/:id_product')
 router.route('/producto')
     .post( postProduct );
 
-router.route('/productos/categoria')
+router.route('/productos/:categoria')
     .get(getProductsByCategoria)
 
 
