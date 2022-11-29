@@ -9,6 +9,7 @@ const {
 
     getProduct,
     getProducts,
+    getProductsByCategoria,
     postProduct,
     putProduct,
     deleteProduct
@@ -29,5 +30,9 @@ router.route('/productos/:id_product')
 
 router.route('/producto')
     .post( postProduct );
+
+router.route('/productos/categoria')
+    .get(getProductsByCategoria)
+
 
 module.exports = router;

@@ -39,6 +39,22 @@ ctrlProduct.getProducts = async (req, res) => {
     }
 };
 
+ctrlProduct.getProductsByCategoria = async (req, res) => {
+    const categoria = req.params.categoria;
+
+    try {
+        const products = await Producto.find( {categoria: categoria} )
+        .populate('idComercio')
+        .sort({precio: 1})
+
+        return res.json(products);
+    } catch (error) {
+        return res.json({
+            msg: 'Error al obtener productos'
+        })
+    }
+};
+
 ctrlProduct.getProduct = async (req, res) => {
     const productId = req.params.id_product;
     try {
