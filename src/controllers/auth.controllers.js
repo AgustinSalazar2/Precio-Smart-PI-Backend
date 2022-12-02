@@ -53,7 +53,10 @@ ctrlAuth.startSession = async (req, res) => {
         };
 
         //----------------- FIN VALIDACIONES -------------------------------------------------------
-
+        
+        // if user.rol == 'comerciante' {
+        //     const comerce = await ComercioModel.findOne({idUsuario: user._id})
+        // }
         const comerce = await ComercioModel.findOne({idUsuario: user._id})
         
         //----------------------------------------------------------------------------------------

@@ -99,10 +99,11 @@ ctrlProduct.postProduct = async (req, res) => {
 
 ctrlProduct.putProduct = async (req, res) => {
     const productId = req.params.id_product;
-    const { productName, marca, presentacion, precio, idComercio, isActive, ...otros } = req.body;
+    // const { productName, marca, presentacion, precio, idComercio, isActive, ...otros } = req.body;
+    const { categoria, productName, marca, presentacion, precio } = req.body;
 
     try {
-        const productUpdate = await Producto.findByIdAndUpdate(productId, { productName, marca, presentacion, precio, idComercio, isActive, ...otros });
+        const productUpdate = await Producto.findByIdAndUpdate(productId, { categoria, productName, marca, presentacion, precio });
         return res.json(
             {
             msg: 'Producto actualizado correctamente',
