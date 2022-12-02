@@ -1,4 +1,3 @@
-
 const {
     model,
     Schema
@@ -15,15 +14,15 @@ const commerceSchema = new Schema({
     },
     phone: {
         type: Number,
-        required:true
+        required: true
     },
-    
-    idUsuario : {
+
+    idUsuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuarios' //!El ref indica la colección a la que tengo que ir a buscar el id!
     },
 
-    isActive : {
+    isActive: {
         type: Boolean,
         default: true
     }

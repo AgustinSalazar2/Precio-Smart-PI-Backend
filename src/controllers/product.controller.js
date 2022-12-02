@@ -27,7 +27,7 @@ const ctrlProduct = {};
 
 ctrlProduct.getProducts = async (req, res) => {
     try {
-        const products = await Producto.find()
+        const products = await Producto.find({isActive: true})
         .populate('idComercio')
         .sort({precio: 1})
 
