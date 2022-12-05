@@ -77,10 +77,10 @@ ctrlAuth.startSession = async (req, res) => {
                 message: "Correct password! ✔",
                 message2: `Welcome to the MATRIX ⚡🕶⚡, ${username}! ☘`,
                 user:{
-                    _id,
-                    username,
-                    email,
-                    rol
+                    _id: user._id,
+                    username: user.username,
+                    email: user.email,
+                    rol: user.rol
                 },
                 token });
         }
