@@ -35,6 +35,7 @@ app.use(require('./routes/auth.routes'));
 app.use(require('./routes/user.routes'));
 app.use(require('./routes/comerce.routes'));
 app.use(require('./routes/product.routes'));
+app.use(require('./routes/foro.routes'));
 
 //*#############################- DIRECTORIO DE ARCHIVOS ESTÁTICOS -#########################################
 // expressApp.use(express.static(path.join(__dirname, 'src/public')));
