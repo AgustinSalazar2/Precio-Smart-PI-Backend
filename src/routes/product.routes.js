@@ -10,6 +10,7 @@ const {
     getProduct,
     getProducts,
     getProductsByCategoria,
+    getProductsByComercio,
     postProduct,
     putProduct,
     deleteProduct
@@ -32,7 +33,10 @@ router.route('/producto')
     .post( postProduct );
 
 router.route('/products/:name_categoria')
-    .get(getProductsByCategoria)
+    .get(getProductsByCategoria);
+
+router.route('/products-comercio/:name_comercio')
+    .get(getProductsByComercio)
 
 
 module.exports = router;

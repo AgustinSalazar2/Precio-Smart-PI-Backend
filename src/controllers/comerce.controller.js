@@ -4,9 +4,11 @@ const ctrlComerce = {};
 
 ctrlComerce.getComercios = async (req, res) => {
     try {
-        const comerces = await Comercio.find();
-        return res.json(comerces);
-    
+        const comerces = await Comercio.find({
+            "isActive": true
+        });
+        return res.status(200).json(comerces);
+
     } catch (error) {
         return res.json({
             msg: 'Error al obtener comercios'
@@ -27,19 +29,33 @@ ctrlComerce.getComercio = async (req, res) => {
     }
 };
 
-ctrlComerce.postComercio = async (req, res) => {    
-    const { commerceName, direccion, phone } = req.body;
-    
+ctrlComerce.postComercio = async (req, res) => {
+    const {
+        commerceName,
+        direccion,
+        phone
+    } = req.body;
+
     try {
-        const newComercio = new Comercio({   //Se instancia un nuevo documento de mongodb
+
+        const comerces = await Comercio.find()
+
+        if (comerces.commerceName === commerceName && comerces.direccion === direccion && comerces.phone === phone) {
+            return res.status(409).json({
+                msg: 'Este comercio ya existe',
+                error: error.message
+            });
+        };
+
+        const newComercio = new Comercio({ //Se instancia un nuevo documento de mongodb
             commerceName,
             direccion,
             phone,
             idUsuario: req.user._id
         });
-    
+
         const comerce = await newComercio.save(); //Se almacena en la base de datos con el metodo save()
-    
+
         return res.json({
             msg: 'Comercio creado correctamente',
             comerce
@@ -47,17 +63,27 @@ ctrlComerce.postComercio = async (req, res) => {
     } catch (error) {
         return res.json({
             msg: 'Error al crear un comercio',
-            error:error.message
+            error: error.message
         });
     }
 };
 
 ctrlComerce.putComercios = async (req, res) => {
     const comerceId = req.params.id_comerce;
-    const { comerceName, direccion, phone, ...otros } = req.body;
+    const {
+        comerceName,
+        direccion,
+        phone,
+        ...otros
+    } = req.body;
 
     try {
-        const comerceUpdate = await Comercio.findByIdAndUpdate(comerceId, { comerceName, direccion, phone, ...otros });
+        const comerceUpdate = await Comercio.findByIdAndUpdate(comerceId, {
+            comerceName,
+            direccion,
+            phone,
+            ...otros
+        });
         return res.json({
             msg: 'Comercio actualizado correctamente',
             comerceUpdate
@@ -71,11 +97,13 @@ ctrlComerce.putComercios = async (req, res) => {
     }
 };
 
-ctrlComerce.deleteComercio = async (req, res)=>{ 
+ctrlComerce.deleteComercio = async (req, res) => {
     const comerceId = req.params.id_comerce;
 
     try {
-        await Comercio.findByIdAndUpdate(comerceId, {isActive: false})
+        await Comercio.findByIdAndUpdate(comerceId, {
+            isActive: false
+        })
         return res.json({
             msg: 'Comercio eliminado correctamente'
         })
