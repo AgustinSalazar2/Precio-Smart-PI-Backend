@@ -35,7 +35,7 @@ router.route('/producto')
 router.route('/products/:name_categoria')
     .get(getProductsByCategoria);
 
-router.route('/products-comercio/:name_comercio')
+router.route('/products-comercio/:idComercio')
     .get(getProductsByComercio)
 
 
