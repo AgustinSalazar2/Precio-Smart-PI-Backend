@@ -57,16 +57,24 @@ ctrlProduct.getProductsByCategoria = async (req, res) => {
 };
 
 ctrlProduct.getProductsByComercio = async (req, res) => {
-    const comercio_name = req.params.name_comercio;
-    console.log(comercio_name);
+    const idComercio = req.params.idComercio;
+    console.log(idComercio);
     try {
 
-        const products = await Producto.find({isActive: true})
-        .populate('idComercio')
+        const products = await Producto.find({isActive: true, idComercio})
+        // .populate('idComercio')
 
-        const productsByComerce = products.filter(product => product.idComercio.commerceName === comercio_name);
-        // console.log('CLG del back. Estos son los productos del comercio', productsByComerce)
-        return res.status(200).json(productsByComerce);
+        console.log('CLG del back. Estos son los productos productos activos: ', products)
+
+        // const ids = products.filter(product => product.idComercio._id)
+
+        
+        // console.log('CLG del back. Estos son los ids de los productos productos activos: ', ids)
+
+
+        // const productsByComerce = products.filter(product => product.idComercio._id === idComercio);
+        // console.log('CLG del back. Estos son los productos del comercio: ', productsByComerce)
+        return res.status(200).json(products);
     } catch (error) {
         return res.status(400).json({
             msg: 'Error al obtener productos',
