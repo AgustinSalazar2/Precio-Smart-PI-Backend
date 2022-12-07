@@ -62,25 +62,8 @@ ctrlProduct.getProductsByComercio = async (req, res) => {
     try {
 
         const products = await Producto.find({isActive: true, idComercio})
-<<<<<<< HEAD
         .populate('idComercio')
 
-        // const productsByComerce = products.filter(product => product.idComercio.commerceName === comercio_name);
-        // console.log('CLG del back. Estos son los productos del comercio', productsByComerce)
-=======
-        // .populate('idComercio')
-
-        console.log('CLG del back. Estos son los productos productos activos: ', products)
-
-        // const ids = products.filter(product => product.idComercio._id)
-
-        
-        // console.log('CLG del back. Estos son los ids de los productos productos activos: ', ids)
-
-
-        // const productsByComerce = products.filter(product => product.idComercio._id === idComercio);
-        // console.log('CLG del back. Estos son los productos del comercio: ', productsByComerce)
->>>>>>> c163e19dc31b601993f50adc884e32af92459630
         return res.status(200).json(products);
     } catch (error) {
         return res.status(400).json({

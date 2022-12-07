@@ -9,7 +9,7 @@ ctrlForo.getForoMens = async (req, res) =>{
         try {
             const mensaForo = await ForoMensaje.find({isActive:true})
             .populate("idComercio")
-            // .sort({updatedAt:"desc"})
+            .sort({updatedAt:"desc"})
 
             return res.json(mensaForo);
 
