@@ -62,6 +62,7 @@ ctrlProduct.getProductsByComercio = async (req, res) => {
     try {
 
         const products = await Producto.find({isActive: true, idComercio})
+<<<<<<< HEAD
         .populate('idComercio')
 
         return res.status(200).json(products);
